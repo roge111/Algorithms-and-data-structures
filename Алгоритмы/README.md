@@ -1,3 +1,30 @@
+# MaxSumSubArray
+
+Это задача по поиску подмассива с максимальной суммой в массиве чисел. Самый эффективный алгоритм решения - алгоритм Кадане.
+
+### Алгоритм
+--
+Для решения используется алгоритм Кадане. Инициализируем две переменные `cur_sum` (суммой каждого подмассива) и `max_sum` (максимальная сумма). В качестве значений присваем в начале первое число массиво. Циклом движемся слева направо по массиву. В `cur_num` мы либо добавляем `nums[index]` или `cur_num + nums[index]`. Выбираем что из этого большею По сути - мы либо начинаем подмассив сначала, либо продолжаем дальше. То есть, как червяк. 
+### Программа
+
+```
+def maxSubArray(self, nums):
+        cur_sum = nums[0]
+        max_sum = cur_sum
+        if len(nums) == 1:
+            return nums[-1]
+        for index, num in enumerate(nums):
+            if index == 0:
+                continue
+            cur_sum = max(num, cur_sum + num)
+            max_sum = max(max_sum, cur_sum)
+            
+        return max_sum
+```
+
+
+
+
 # Longest Palindromic Substring
 Данная задача располагается в файле [Longest Palindromic Substring.py](https://github.com/roge111/Algorithms-and-data-structures/blob/main/Алгоритмы/Longest%20Palindromic%20Substring.py)
 
